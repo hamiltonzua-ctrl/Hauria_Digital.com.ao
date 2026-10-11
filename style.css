@@ -1,0 +1,1118 @@
+/* =========================================
+   HAUREA DIGITAL — PLATINUM LUXURY
+   Obsidian Black • Platinum Gold • 3D
+========================================= */
+
+/* 1. IDENTIDADE VISUAL */
+
+:root {
+    /* Fundos */
+    --obsidiana: #080808;
+    --preto: #030303;
+    --fundo: #0d0d0d;
+    --cartao: #111111;
+
+    /* Dourados */
+    --ouro-escuro: #76551b;
+    --ouro: #b89646;
+    --platinum: #e8d5a0;
+    --ouro-claro: #fff1c5;
+
+    --borda: rgba(207, 174, 104, 0.22);
+
+    /* =====================================
+       CORES DOS TEXTOS
+       Altere as cores AQUI e muda no site todo
+    ===================================== */
+
+    /* Geral */
+    --texto: #f5f2eb;                    /* texto principal do site */
+    --cinza: #a7a39a;                    /* parágrafos das secções */
+
+    /* Cabeçalho */
+    --texto-menu: #d4d0c7;               /* links do menu */
+    --texto-menu-hover: var(--platinum); /* menu ao passar o rato */
+    --texto-logo-span: #d6d1c5;          /* parte clara do logótipo */
+    --texto-botao-header: var(--platinum);
+    --texto-botao-header-hover: #080808;
+
+    /* Página inicial */
+    --texto-subtitulo: var(--platinum);  /* texto pequeno acima do título */
+    --texto-descricao: #bcb8af;          /* descrição abaixo do título */
+    --texto-botao-principal: #17120a;
+    --texto-botao-secundario: #e4d7b9;
+    --texto-detalhe: #d6c7a5;            /* texto na barra lateral */
+
+    /* Serviços */
+    --texto-numero: #c6a253;             /* 01, 02, 03... */
+    --texto-servico-titulo: #eee5d2;
+    --texto-servico-paragrafo: #a7a39a;
+
+    /* Rodapé */
+    --texto-rodape: #a7a39a;
+    --texto-copyright: #77736b;
+
+    /* Gradiente dourado dos títulos (palavras em <span>) */
+    --gradiente-titulo: linear-gradient(
+        115deg,
+        #80602a 0%,
+        #c7a65c 17%,
+        #fff0c2 33%,
+        #d4b56f 46%,
+        #f8e7b5 57%,
+        #9d7838 73%,
+        #e8d5a0 88%,
+        #a27d3d 100%
+    );
+
+    /* Gradiente dourado do logótipo */
+    --gradiente-logo: linear-gradient(
+        120deg,
+        #8a672a 0%,
+        #e8d5a0 22%,
+        #fff5d7 38%,
+        #ad8740 53%,
+        #f3dfad 72%,
+        #866020 100%
+    );
+}
+
+/* 2. CONFIGURAÇÕES GERAIS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--obsidiana);
+    color: var(--texto);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: var(--ouro);
+    color: var(--preto);
+}
+
+/* 3. CABEÇALHO */
+
+.cabecalho {
+    width: 100%;
+    min-height: 88px;
+    padding: 20px 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    background: rgba(5, 5, 5, 0.94);
+    border-bottom: 1px solid var(--borda);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(18px);
+}
+
+/* 4. LOGÓTIPO TIPOGRÁFICO */
+
+.logo {
+    display: inline-block;
+
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 3px;
+
+    color: transparent;
+
+    background: var(--gradiente-logo);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    filter: drop-shadow(
+        0 2px 7px rgba(198, 159, 78, 0.14)
+    );
+}
+
+.logo span {
+    color: var(--texto-logo-span);
+    background: none;
+    -webkit-text-fill-color: var(--texto-logo-span);
+
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+
+/* 5. NAVEGAÇÃO */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.menu a {
+    position: relative;
+
+    font-size: 13px;
+    color: var(--texto-menu);
+
+    transition: color 0.3s ease;
+}
+
+.menu a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--platinum);
+
+    transition: width 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--texto-menu-hover);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+/* 6. BOTÃO DO CABEÇALHO */
+
+.botao-header {
+    padding: 11px 19px;
+
+    border: 1px solid var(--ouro);
+    color: var(--texto-botao-header);
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+
+    transition: all 0.3s ease;
+}
+
+.botao-header:hover {
+    background: linear-gradient(
+        120deg,
+        var(--ouro-escuro),
+        var(--platinum),
+        var(--ouro)
+    );
+
+    color: var(--texto-botao-header-hover);
+    box-shadow: 0 0 22px rgba(207, 174, 104, 0.15);
+}
+
+/* 7. PÁGINA INICIAL */
+
+.hero {
+    min-height: 86vh;
+    padding: 100px 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 55px;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 85% 40%,
+            rgba(149, 104, 31, 0.13),
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 15% 90%,
+            rgba(173, 135, 64, 0.07),
+            transparent 40%
+        ),
+        linear-gradient(
+            120deg,
+            #030303 0%,
+            #0b0b0b 52%,
+            #080706 100%
+        );
+}
+
+/* BRILHO METÁLICO NO FUNDO */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 30%,
+            rgba(218, 184, 111, 0.035) 48%,
+            transparent 58%
+        );
+
+    pointer-events: none;
+}
+
+/* DETALHE DE LUZ */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+    width: 420px;
+    height: 420px;
+
+    right: 5%;
+    top: 15%;
+
+    border-radius: 50%;
+    border: 1px solid rgba(207, 174, 104, 0.6);
+    border-top-color: #d4b56f; /* borda superior dourada */
+
+    box-shadow:
+        0 0 80px rgba(184, 150, 70, 0.6),
+        inset 0 0 70px rgba(184, 150, 70, 0.6);
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 8. TEXTO PRINCIPAL */
+
+.hero-conteudo {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+}
+
+.subtitulo {
+    margin-bottom: 24px;
+
+    color: var(--texto-subtitulo);
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    line-height: 1.8;
+}
+
+.hero h1 {
+    max-width: 750px;
+    margin-bottom: 27px;
+
+    font-size: clamp(42px, 5.5vw, 76px);
+    font-weight: 700;
+
+    letter-spacing: -2px;
+    line-height: 1.13;
+}
+
+/* TEXTO DOURADO PLATINUM */
+
+.hero h1 span,
+.secao-introducao h2 span,
+.sobre h2 span {
+    display: inline-block;
+
+    color: transparent;
+
+    background: var(--gradiente-titulo);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    filter: drop-shadow(
+        0 2px 9px rgba(184, 150, 70, 0.12)
+    );
+}
+
+/* DESCRIÇÃO */
+
+.hero .descricao {
+    max-width: 570px;
+    margin-bottom: 35px;
+
+    color: var(--texto-descricao);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+/* 9. BOTÕES PRINCIPAIS */
+
+.hero-botoes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.botao-principal,
+.botao-secundario {
+    min-height: 49px;
+    padding: 13px 23px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+/* BOTÃO METÁLICO */
+
+.botao-principal {
+    color: var(--texto-botao-principal);
+
+    background: linear-gradient(
+        115deg,
+        #8d692d 0%,
+        #d5b66d 24%,
+        #fff0bd 43%,
+        #c6a253 62%,
+        #e8d5a0 78%,
+        #97702d 100%
+    );
+
+    border: 1px solid #e1c47f;
+    box-shadow: 0 5px 22px rgba(174, 132, 48, 0.12);
+}
+
+.botao-principal:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 28px rgba(207, 174, 104, 0.23),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.botao-secundario {
+    border: 1px solid rgba(207, 174, 104, 0.5);
+    color: var(--texto-botao-secundario);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.botao-secundario:hover {
+    border-color: var(--platinum);
+    background: rgba(207, 174, 104, 0.07);
+    transform: translateY(-3px);
+}
+
+/* 10. DETALHE LATERAL DA MARCA */
+
+.hero-detalhe {
+    min-width: 190px;
+    padding: 25px 0 25px 27px;
+
+    border-left: 1px solid rgba(207, 174, 104, 0.5);
+
+    position: relative;
+    z-index: 2;
+}
+
+.hero-detalhe p {
+    margin-top: 15px;
+
+    color: var(--texto-detalhe);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.linha-dourada {
+    display: block;
+    width: 45px;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #82612a,
+        #fff0bd,
+        #a17b38
+    );
+
+    box-shadow: 0 0 12px rgba(207, 174, 104, 0.3);
+}
+
+/* 11. SERVIÇOS */
+
+.servicos {
+    padding: 110px 8%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0a0a0a,
+            #0d0d0d
+        );
+
+    border-top: 1px solid rgba(207, 174, 104, 0.08);
+}
+
+.secao-introducao {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.secao-introducao h2,
+.sobre h2,
+.contactos h2 {
+    margin-bottom: 20px;
+
+    font-size: clamp(30px, 4vw, 45px);
+    line-height: 1.3;
+    letter-spacing: -0.8px;
+}
+
+.secao-introducao > p:last-child {
+    color: var(--cinza);
+    font-size: 15px;
+}
+
+/* 12. CARTÕES DE SERVIÇOS */
+
+.servicos-lista {
+    margin-top: 55px;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.servico {
+    min-height: 250px;
+    padding: 34px 29px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.025),
+            rgba(255, 255, 255, 0.005) 55%,
+            rgba(184, 150, 70, 0.025)
+        );
+
+    border: 1px solid rgba(207, 174, 104, 0.16);
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+/* REFLEXO NO CARTÃO */
+
+.servico::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #f8e7b5,
+        transparent
+    );
+
+    transition: left 0.6s ease;
+}
+
+.servico:hover::before {
+    left: 120%;
+}
+
+.servico:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(232, 213, 160, 0.55);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(184, 150, 70, 0.075),
+            rgba(255, 255, 255, 0.01)
+        );
+}
+
+.numero {
+    color: var(--texto-numero);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.servico h3 {
+    margin: 25px 0 13px;
+
+    color: var(--texto-servico-titulo);
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.servico p {
+    color: var(--texto-servico-paragrafo);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* 13. SOBRE NÓS */
+
+.sobre {
+    padding: 110px 8%;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(145, 105, 36, 0.075),
+            transparent 60%
+        ),
+        #070707;
+
+    border-top: 1px solid rgba(207, 174, 104, 0.1);
+    border-bottom: 1px solid rgba(207, 174, 104, 0.1);
+}
+
+.sobre h2 {
+    max-width: 800px;
+    margin: 0 auto 25px;
+}
+
+.sobre > p:last-child {
+    max-width: 720px;
+    margin: 0 auto;
+
+    color: var(--cinza);
+    font-size: 15px;
+    line-height: 2;
+}
+
+/* 14. CONTACTOS */
+
+.contactos {
+    padding: 110px 8%;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(184, 150, 70, 0.08),
+            transparent 60%
+        ),
+        #0b0b0b;
+}
+
+.contactos h2 {
+    max-width: 800px;
+    margin: 0 auto 22px;
+}
+
+.contactos > p:not(.subtitulo) {
+    max-width: 610px;
+    margin: 0 auto 32px;
+
+    color: var(--cinza);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* 15. RODAPÉ */
+
+.rodape {
+    padding: 38px 8%;
+
+    text-align: center;
+
+    background: #030303;
+    border-top: 1px solid var(--borda);
+}
+
+.rodape .logo {
+    margin-bottom: 10px;
+}
+
+.rodape p {
+    margin-top: 9px;
+
+    color: var(--texto-rodape);
+    font-size: 12px;
+}
+
+.rodape .copyright {
+    margin-top: 20px;
+    color: var(--texto-copyright);
+    font-size: 11px;
+}
+
+/* 16. ACESSIBILIDADE */
+
+a:focus-visible {
+    outline: 2px solid var(--platinum);
+    outline-offset: 5px;
+}
+
+section[id] {
+    scroll-margin-top: 105px;
+}
+
+/* 17. TABLETS */
+
+@media (max-width: 1050px) {
+    .cabecalho {
+        padding: 20px 5%;
+        gap: 20px;
+    }
+
+    .menu {
+        gap: 17px;
+    }
+
+    .logo {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .logo span {
+        letter-spacing: 2px;
+    }
+
+    .hero {
+        padding: 90px 6%;
+        gap: 30px;
+    }
+
+    .hero-detalhe {
+        min-width: 150px;
+    }
+
+    .servicos-lista {
+        gap: 16px;
+    }
+
+    .servico {
+        padding: 27px 22px;
+    }
+}
+
+/* 18. TELEMÓVEIS */
+
+@media (max-width: 760px) {
+    .cabecalho {
+        position: relative;
+
+        flex-direction: column;
+        justify-content: center;
+        gap: 19px;
+
+        padding: 23px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .menu {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .botao-header {
+        padding: 10px 17px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 90px 6% 80px;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 55px;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 10vw, 60px);
+        letter-spacing: -1.5px;
+    }
+
+    .hero .descricao {
+        font-size: 15px;
+    }
+
+    .subtitulo {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .hero-botoes {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-botoes a {
+        width: 100%;
+    }
+
+    .hero-detalhe {
+        min-width: 0;
+        padding: 12px 0 12px 22px;
+    }
+
+    .hero::after {
+        width: 260px;
+        height: 260px;
+        right: -100px;
+        top: 40%;
+    }
+
+    .servicos,
+    .sobre,
+    .contactos {
+        padding: 80px 6%;
+    }
+
+    .servicos-lista {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 38px;
+    }
+
+    .servico {
+        min-height: auto;
+        padding: 30px 25px;
+    }
+
+    .secao-introducao h2,
+    .sobre h2,
+    .contactos h2 {
+        font-size: clamp(29px, 8vw, 38px);
+    }
+
+    .rodape {
+        padding: 32px 6%;
+    }
+}
+
+/* 19. TELEMÓVEIS PEQUENOS */
+
+@media (max-width: 380px) {
+    .logo {
+        font-size: 18px;
+        letter-spacing: 1.5px;
+    }
+
+    .logo span {
+        letter-spacing: 1.5px;
+    }
+
+    .menu {
+        gap: 10px 14px;
+    }
+
+    .menu a {
+        font-size: 11px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero {
+        padding-top: 70px;
+    }
+}
+
+/* 20. MOVIMENTO REDUZIDO */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 21. FORMULÁRIO DE RESERVA */
+
+.reserva {
+    padding: 110px 8%;
+
+    background: #000000;
+    border-top: 1px solid rgba(207, 174, 104, 0.1);
+}
+
+.reserva-form {
+    max-width: 780px;
+    margin: 55px auto 0;
+    padding: 48px 44px;
+
+    background: #000000;
+    border: 1px solid rgba(207, 174, 104, 0.16);
+}
+
+.reserva-grelha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px 32px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo-total {
+    grid-column: 1 / -1;
+}
+
+/* TÍTULOS DOS CAMPOS (DOURADO) */
+
+.campo label {
+    color: var(--ouro);
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.campo label small {
+    margin-left: 6px;
+
+    color: #77736b;
+    font-size: 11px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-transform: none;
+}
+
+/* CAMPOS (LINHA FINA, TEXTO BRANCO) */
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 12px 0;
+
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(207, 174, 104, 0.22);
+    border-radius: 0;
+    outline: none;
+
+    color: #ffffff;
+    color-scheme: dark;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: rgba(255, 255, 255, 0.32);
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-bottom-color: var(--platinum);
+    box-shadow: 0 1px 0 var(--platinum);
+}
+
+.campo textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+/* SELETOR (OCASIÃO) */
+
+.campo select {
+    padding-right: 28px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23b89646' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+}
+
+.campo select option {
+    background: #0d0d0d;
+    color: #ffffff;
+}
+
+/* TELEFONE COM INDICATIVO +244 */
+
+.campo-telefone {
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid rgba(207, 174, 104, 0.22);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.campo-telefone:focus-within {
+    border-bottom-color: var(--platinum);
+    box-shadow: 0 1px 0 var(--platinum);
+}
+
+.prefixo {
+    margin-right: 14px;
+    padding: 12px 14px 12px 0;
+
+    border-right: 1px solid rgba(207, 174, 104, 0.22);
+
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.campo-telefone input,
+.campo-telefone input:focus {
+    border-bottom: none;
+    box-shadow: none;
+}
+
+/* BOTÃO DOURADO COM TEXTO PRETO */
+
+.reserva-acao {
+    margin-top: 44px;
+    padding-top: 34px;
+
+    display: flex;
+    justify-content: center;
+
+    border-top: 1px solid rgba(207, 174, 104, 0.16);
+}
+
+.botao-reserva {
+    min-width: 260px;
+
+    font-family: inherit;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* RESERVA — TELEMÓVEIS */
+
+@media (max-width: 760px) {
+    .reserva {
+        padding: 80px 6%;
+    }
+
+    .reserva-form {
+        margin-top: 38px;
+        padding: 34px 24px;
+    }
+
+    .reserva-grelha {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .campo input,
+    .campo select,
+    .campo textarea {
+        font-size: 16px;
+    }
+
+    .botao-reserva {
+        width: 100%;
+    }
+}
+
+/* TÍTULO DO FORMULÁRIO — "ouro" em dourado metálico */
+
+.reserva .secao-introducao h2 {
+    color: #ffffff;
+}
+
+.reserva .secao-introducao h2 span {
+    background: linear-gradient(
+        115deg,
+        #8a672a 0%,
+        #d4b56f 18%,
+        #fff5d7 36%,
+        #e8c872 50%,
+        #fff0c2 62%,
+        #b8923f 80%,
+        #e8d5a0 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    filter:
+        drop-shadow(0 0 12px rgba(232, 200, 114, 0.35))
+        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
