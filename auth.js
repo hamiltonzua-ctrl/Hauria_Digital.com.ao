@@ -1,6 +1,6 @@
 /* ==========================================================================
    HAUREA DIGITAL — Autenticação (login, registo e terminar sessão)
-   Requer: supabase-init.js carregado ANTES deste ficheiro no HTML
+   Requer: o ficheiro que cria window.supabaseClient carregado ANTES deste
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return "Sem ligação à internet. Verifique e tente novamente.";
         }
         if (msg.includes("password")) {
-            return "A palavra-passe não é válida. Tente outra.";
+            return "A palavra-passe não é válida. Tente outra mais forte.";
         }
         if (msg.includes("email")) {
             return "O email introduzido não é válido.";
@@ -198,8 +198,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ---------------------------------------------------------------------
     // Eventos
     // ---------------------------------------------------------------------
-    el.loginTab.addEventListener("click", () => setMode("login"));
-    el.registerTab.addEventListener("click", () => setMode("register"));
+    el.loginTab.addEventListener("click", () => {
+        if (!busy) setMode("login");
+    });
+
+    el.registerTab.addEventListener("click", () => {
+        if (!busy) setMode("register");
+    });
 
     el.authForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -282,8 +287,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     supabaseClient = await esperarSupabase();
 
     if (!supabaseClient) {
+        console.error(
+            "HAUREA DIGITAL: window.supabaseClient não foi criado. " +
+            "Confirme que o ficheiro de ligação ao Supabase está no HTML antes do auth.js."
+        );
         showMessage(
-            "O Supabase não foi inicializado. Verifique o ficheiro supabase-init.js.",
+            "Não foi possível ligar ao serviço. Recarregue a página (Ctrl + F5).",
             "error"
         );
         return;

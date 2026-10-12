@@ -1,6 +1,6 @@
 /* ==========================================================================
    HAUREA DIGITAL — Pedidos de serviço ("Refina o meu ouro")
-   Requer: supabase-init.js carregado ANTES deste ficheiro no HTML
+   Requer: o ficheiro que cria window.supabaseClient carregado ANTES deste
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "em andamento": "Em andamento",
         completed: "Concluído",
         concluido: "Concluído",
-        concluído: "Concluído",
+        "concluído": "Concluído",
         cancelled: "Cancelado",
         cancelado: "Cancelado"
     };
@@ -60,6 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // ---------------------------------------------------------------------
     // Funções auxiliares
     // ---------------------------------------------------------------------
+
+    /** Devolve o cliente Supabase ou lança erro se não estiver inicializado */
+    function getClient() {
+        if (!window.supabaseClient) {
+            throw new Error("O Supabase não está inicializado.");
+        }
+        return window.supabaseClient;
+    }
+
+    async function getCurrentUser() {
+        const { data, error } = await getClient().auth.getUser();
+
+        if (error) throw error;
+        return data.user;
+    }
 
     /** Mostra uma mensagem. tipo: "info" | "success" | "error" */
     function showMessage(text = "", tipo = "info", linkUrl = null) {
@@ -118,17 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
             : data.toLocaleString("pt-PT");
     }
 
-    async function getCurrentUser() {
-        if (!window.supabaseClient) {
-            throw new Error("O Supabase não está inicializado.");
-        }
-
-        const { data, error } = await window.supabaseClient.auth.getUser();
-
-        if (error) throw error;
-        return data.user;
-    }
-
     function criarLinkWhatsApp({ clientName, email, service, description }) {
         const texto =
             "✨ *NOVO PEDIDO — HAUREA DIGITAL* ✨\n\n" +
@@ -173,10 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setLoadingRequests(true);
 
         try {
-            const client = window.supabaseClient;
-
-            if (!client) throw new Error("O Supabase não está inicializado.");
-
+            const client = getClient();
             const user = await getCurrentUser();
 
             if (!user) {
@@ -237,10 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showMessage("A registar o pedido...");
 
         try {
-            const client = window.supabaseClient;
-
-            if (!client) throw new Error("O Supabase não está inicializado.");
-
+            const client = getClient();
             const user = await getCurrentUser();
 
             if (!user) {
@@ -248,6 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            // O estado "Pendente" é definido pela base de dados
             const { error } = await client
                 .from("service_requests")
                 .insert({

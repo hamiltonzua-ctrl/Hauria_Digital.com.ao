@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <meta name="color-scheme" content="dark">
 
     <meta name="description"
-          content="HAUREA DIGITAL — Criação de websites, marketing digital e identidade digital.">
+          content="HAUREA DIGITAL — Websites, marketing digital, redes sociais, design gráfico, publicidade e consultoria digital para startups e PMEs.">
 
     <title>HAUREA DIGITAL | Você tem o ouro. Nós refinamos.</title>
 
@@ -23,6 +23,10 @@
 </head>
 
 <body>
+
+    <noscript>
+        Para usar a HAUREA DIGITAL, ative o JavaScript no seu navegador.
+    </noscript>
 
     <!-- =====================================
          1. PÁGINA DE ENTRADA E AUTENTICAÇÃO
@@ -52,17 +56,11 @@
             <!-- Alternar entre login e registo -->
             <div class="auth-tabs">
 
-                <button
-                    type="button"
-                    id="authModeLogin"
-                    class="auth-tab active">
+                <button type="button" id="authModeLogin" class="auth-tab active">
                     Iniciar sessão
                 </button>
 
-                <button
-                    type="button"
-                    id="authModeRegister"
-                    class="auth-tab">
+                <button type="button" id="authModeRegister" class="auth-tab">
                     Criar conta
                 </button>
 
@@ -100,24 +98,17 @@
                         id="authPassword"
                         placeholder="A sua palavra-passe"
                         autocomplete="current-password"
+                        minlength="6"
                         required>
                 </div>
 
-                <button
-                    type="submit"
-                    id="authSubmit"
-                    class="botao-principal auth-submit">
+                <button type="submit" id="authSubmit" class="botao-principal auth-submit">
                     Iniciar sessão
                 </button>
 
             </form>
 
-            <p
-                id="authMessage"
-                class="auth-message"
-                role="status"
-                aria-live="polite">
-            </p>
+            <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
 
             <p class="auth-privacy">
                 A sua conta dá acesso à sua área de cliente.
@@ -130,7 +121,6 @@
         </p>
 
     </section>
-
 
     <!-- =====================================
          2. SITE PRINCIPAL — APÓS LOGIN
@@ -158,17 +148,13 @@
 
                 <span id="welcomeUser"></span>
 
-                <button
-                    type="button"
-                    id="logoutBtn"
-                    class="botao-header">
+                <button type="button" id="logoutBtn" class="botao-header">
                     Terminar sessão
                 </button>
 
             </div>
 
         </header>
-
 
         <main>
 
@@ -187,9 +173,10 @@
                     </h1>
 
                     <p class="descricao">
-                        Transformamos ideias em experiências digitais.
-                        Criamos websites e estratégias de marketing
-                        para levar a sua marca a um novo nível.
+                        Ajudamos startups e pequenas e médias empresas
+                        a crescer no mundo digital, com websites,
+                        marketing e uma presença digital à altura
+                        do seu negócio.
                     </p>
 
                     <div class="hero-botoes">
@@ -218,7 +205,6 @@
 
             </section>
 
-
             <!-- SERVIÇOS -->
             <section class="servicos" id="servicos">
 
@@ -241,48 +227,70 @@
                 <div class="servicos-lista">
 
                     <article class="servico">
-
                         <span class="numero">01</span>
-
                         <h3>Criação de Websites</h3>
-
                         <p>
-                            Websites modernos, responsivos e alinhados
-                            com a identidade da sua marca.
+                            Sites profissionais, institucionais
+                            e lojas online.
                         </p>
-
                     </article>
 
                     <article class="servico">
-
                         <span class="numero">02</span>
-
                         <h3>Marketing Digital</h3>
-
                         <p>
-                            Estratégias para aumentar a visibilidade,
-                            alcançar clientes e impulsionar vendas.
+                            Estratégias para aumentar a visibilidade
+                            e as vendas.
                         </p>
-
                     </article>
 
                     <article class="servico">
-
                         <span class="numero">03</span>
-
-                        <h3>Identidade Digital</h3>
-
+                        <h3>Gestão de Redes Sociais</h3>
                         <p>
-                            Uma presença digital consistente para
-                            diferenciar a sua marca no mercado.
+                            Planeamento, criação de conteúdos
+                            e gestão de páginas.
                         </p>
+                    </article>
 
+                    <article class="servico">
+                        <span class="numero">04</span>
+                        <h3>Design Gráfico e Identidade Visual</h3>
+                        <p>
+                            Logótipos, banners e materiais publicitários.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">05</span>
+                        <h3>Publicidade Digital</h3>
+                        <p>
+                            Campanhas de anúncios para atrair
+                            potenciais clientes.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">06</span>
+                        <h3>Manutenção de Websites</h3>
+                        <p>
+                            Atualizações, correções e melhorias
+                            nos sites.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">07</span>
+                        <h3>Consultoria Digital</h3>
+                        <p>
+                            Orientação para melhorar a presença
+                            e o crescimento dos negócios.
+                        </p>
                     </article>
 
                 </div>
 
             </section>
-
 
             <!-- SOBRE NÓS -->
             <section class="sobre" id="sobre">
@@ -290,18 +298,17 @@
                 <p class="subtitulo">A NOSSA ESSÊNCIA</p>
 
                 <h2>
-                    O seu potencial merece
-                    <span>mais.</span>
+                    Seu potencial.
+                    <span>Nossa transformação.</span>
                 </h2>
 
                 <p>
-                    A HAUREA DIGITAL ajuda empresas e empreendedores
-                    a revelar o seu potencial através da tecnologia,
-                    criatividade e inovação.
+                    A HAUREA DIGITAL ajuda startups, pequenas e médias
+                    empresas e empreendedores a revelar o seu potencial
+                    através da tecnologia, criatividade e inovação.
                 </p>
 
             </section>
-
 
             <!-- FORMULÁRIO DE PEDIDO DE SERVIÇOS -->
             <section class="reserva" id="reserva">
@@ -335,27 +342,15 @@
                                 </label>
 
                                 <select id="service" required>
-
-                                    <option value="">
-                                        Selecione um serviço
-                                    </option>
-
-                                    <option value="Criação de websites">
-                                        Criação de websites
-                                    </option>
-
-                                    <option value="Marketing digital">
-                                        Marketing digital
-                                    </option>
-
-                                    <option value="Identidade digital">
-                                        Identidade digital
-                                    </option>
-
-                                    <option value="Outro serviço">
-                                        Outro serviço
-                                    </option>
-
+                                    <option value="">Selecione um serviço</option>
+                                    <option value="Criação de Websites">Criação de Websites</option>
+                                    <option value="Marketing Digital">Marketing Digital</option>
+                                    <option value="Gestão de Redes Sociais">Gestão de Redes Sociais</option>
+                                    <option value="Design Gráfico e Identidade Visual">Design Gráfico e Identidade Visual</option>
+                                    <option value="Publicidade Digital">Publicidade Digital</option>
+                                    <option value="Manutenção de Websites">Manutenção de Websites</option>
+                                    <option value="Consultoria Digital">Consultoria Digital</option>
+                                    <option value="Outro serviço">Outro serviço</option>
                                 </select>
 
                             </div>
@@ -380,33 +375,22 @@
 
                         <div class="reserva-acao">
 
-                            <button
-                                type="submit"
-                                id="submitRequestBtn"
-                                class="botao-principal">
+                            <button type="submit" id="submitRequestBtn" class="botao-principal">
                                 Enviar pedido
                             </button>
 
                         </div>
 
-                        <p
-                            id="requestMessage"
-                            role="status"
-                            aria-live="polite">
-                        </p>
+                        <p id="requestMessage" role="status" aria-live="polite"></p>
 
                     </form>
-
 
                     <!-- HISTÓRICO DE PEDIDOS -->
                     <div class="my-requests-section">
 
                         <h3>Os meus pedidos</h3>
 
-                        <button
-                            type="button"
-                            id="loadRequestsBtn"
-                            class="botao-secundario">
+                        <button type="button" id="loadRequestsBtn" class="botao-secundario">
                             Consultar os meus pedidos
                         </button>
 
@@ -417,7 +401,6 @@
                 </div>
 
             </section>
-
 
             <!-- CONTACTOS -->
             <section class="contactos" id="contactos">
@@ -447,7 +430,6 @@
 
         </main>
 
-
         <!-- RODAPÉ -->
         <footer class="rodape">
 
@@ -465,14 +447,20 @@
 
     </div>
 
-
     <!-- =====================================
          3. JAVASCRIPT — ORDEM IMPORTANTE
     ====================================== -->
+  
+    <!-- Biblioteca Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase.js"></script>
-    <script src="auth.js"></script>
-    <script src="script.js"></script>
 
+    <!-- Ligação à base de dados -->
+    <script src="supabase-init.js"></script>
+
+    <!-- Autenticação: registo, login e terminar sessão -->
+    <script src="auth.js"></script>
+
+    <!-- Pedidos de serviços da HAUREA DIGITAL -->
+    <script src="script.js"></script>
 </body>
 </html>

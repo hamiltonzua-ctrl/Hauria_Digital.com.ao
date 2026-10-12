@@ -8,7 +8,7 @@
     "use strict";
 
     // ---------------------------------------------------------------------
-    // Configuração
+    // Configuração (só chave pública — nunca a "secret" nem a "service_role")
     // ---------------------------------------------------------------------
     const SUPABASE_URL = "https://npwujzliadqfbsqqxzdw.supabase.co";
     const SUPABASE_PUBLISHABLE_KEY =
@@ -32,7 +32,7 @@
     if (typeof createClient !== "function") {
         console.error(
             `${LOG_PREFIX} a biblioteca Supabase não foi carregada. ` +
-                "Confirma se o <script> da biblioteca vem antes deste ficheiro no HTML."
+                "Confirme que o <script> da biblioteca vem antes deste ficheiro no HTML."
         );
         return;
     }
@@ -45,7 +45,7 @@
 
     if (!urlValido || !chaveValida) {
         console.error(
-            `${LOG_PREFIX} configuração inválida. Verifica o URL e a chave pública do Supabase.`
+            `${LOG_PREFIX} configuração inválida. Verifique o URL e a chave pública do Supabase.`
         );
         return;
     }

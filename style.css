@@ -87,7 +87,8 @@ section[id] {
 a:focus-visible,
 button:focus-visible,
 select:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+input:focus-visible {
     outline: 2px solid var(--ouro);
     outline-offset: 3px;
 }
@@ -262,6 +263,7 @@ button:disabled {
     align-items: center;
     gap: 60px;
     min-height: calc(100vh - 70px);
+    min-height: calc(100dvh - 70px);
     padding: 80px 5%;
     background:
         radial-gradient(ellipse at 20% 0%, rgba(212, 175, 55, 0.14), transparent 55%),
@@ -347,11 +349,17 @@ button:disabled {
 /* ---------- SERVIÇOS ---------- */
 
 .servicos-lista {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 24px;
     max-width: 1150px;
     margin: 0 auto;
+}
+
+.servicos-lista .servico {
+    flex: 1 1 260px;
+    max-width: 360px;
 }
 
 .servico {
@@ -815,6 +823,10 @@ button:disabled {
         justify-content: center;
         flex-wrap: wrap;
         gap: 10px 20px;
+    }
+
+    section[id] {
+        scroll-margin-top: 150px;
     }
 
     .hero {
