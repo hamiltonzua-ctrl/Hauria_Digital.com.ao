@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <meta name="color-scheme" content="dark">
+
+    <meta name="description"
+          content="HAUREA DIGITAL — Websites, marketing digital, redes sociais, design gráfico, publicidade e consultoria digital para startups e PMEs.">
+
+    <title>HAUREA DIGITAL | Você tem o ouro. Nós refinamos.</title>
+
+    <!-- Ícone do separador do navegador (H dourado) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080808'/%3E%3Ctext x='50' y='70' font-size='62' text-anchor='middle' fill='%23d4af37' font-family='Georgia,serif'%3EH%3C/text%3E%3C/svg%3E">
+
+    <!-- Fonte elegante do logótipo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <noscript>
+        Para usar a HAUREA DIGITAL, ative o JavaScript no seu navegador.
+    </noscript>
+
+    <!-- =====================================
+         1. PÁGINA DE ENTRADA E AUTENTICAÇÃO
+    ====================================== -->
+    <section id="authPage" class="auth-page">
+
+        <a href="#" class="logo auth-logo" aria-label="HAUREA DIGITAL">
+            <span class="auth-brand-nome">HAUREA</span>
+            <span class="auth-brand-linha" aria-hidden="true"></span>
+            <span class="auth-brand-sub">DIGITAL</span>
+        </a>
+
+        <div class="auth-card">
+
+            <p class="subtitulo">BEM-VINDO AO UNIVERSO HAUREA</p>
+
+            <h1>
+                O seu potencial merece
+                <span>mais.</span>
+            </h1>
+
+            <p class="auth-intro">
+                Entre na sua conta ou crie uma para começar
+                a transformar as suas ideias.
+            </p>
+
+            <!-- Alternar entre login e registo -->
+            <div class="auth-tabs">
+
+                <button type="button" id="authModeLogin" class="auth-tab active">
+                    Iniciar sessão
+                </button>
+
+                <button type="button" id="authModeRegister" class="auth-tab">
+                    Criar conta
+                </button>
+
+            </div>
+
+            <!-- Formulário de autenticação -->
+            <form id="authForm">
+
+                <div class="campo" id="authNameField" hidden>
+                    <label for="authName">Nome completo</label>
+
+                    <input
+                        type="text"
+                        id="authName"
+                        placeholder="O seu nome completo"
+                        autocomplete="name">
+                </div>
+
+                <div class="campo">
+                    <label for="authEmail">Email</label>
+
+                    <input
+                        type="email"
+                        id="authEmail"
+                        placeholder="nome@email.com"
+                        autocomplete="email"
+                        required>
+                </div>
+
+                <div class="campo">
+                    <label for="authPassword">Palavra-passe</label>
+
+                    <input
+                        type="password"
+                        id="authPassword"
+                        placeholder="A sua palavra-passe"
+                        autocomplete="current-password"
+                        minlength="6"
+                        required>
+                </div>
+
+                <button type="submit" id="authSubmit" class="botao-principal auth-submit">
+                    Iniciar sessão
+                </button>
+
+            </form>
+
+            <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
+
+            <p class="auth-privacy">
+                A sua conta dá acesso à sua área de cliente.
+            </p>
+
+        </div>
+
+        <p class="auth-footer">
+            © 2026 HAUREA DIGITAL · VALOR, EXCELÊNCIA E PRESENÇA DIGITAL
+        </p>
+
+    </section>
+
+    <!-- =====================================
+         2. SITE PRINCIPAL — APÓS LOGIN
+    ====================================== -->
+    <div id="appContent" hidden>
+
+        <!-- CABEÇALHO -->
+        <header class="cabecalho">
+
+            <a href="#inicio" class="logo">
+                HAUREA <span>DIGITAL</span>
+            </a>
+
+            <nav class="menu" aria-label="Menu principal">
+
+                <a href="#inicio">Início</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#sobre">Sobre nós</a>
+                <a href="#reserva">Solicitar serviço</a>
+                <a href="#contactos">Contactos</a>
+
+            </nav>
+
+            <div class="header-account">
+
+                <span id="welcomeUser"></span>
+
+                <button type="button" id="logoutBtn" class="botao-header">
+                    Terminar sessão
+                </button>
+
+            </div>
+
+        </header>
+
+        <main>
+
+            <!-- PÁGINA INICIAL -->
+            <section class="hero" id="inicio">
+
+                <div class="hero-conteudo">
+
+                    <p class="subtitulo">
+                        ESTRATÉGIA · TECNOLOGIA · CRESCIMENTO
+                    </p>
+
+                    <h1>
+                        Você tem o ouro.
+                        <span>Nós refinamos.</span>
+                    </h1>
+
+                    <p class="descricao">
+                        Ajudamos startups e pequenas e médias empresas
+                        a crescer no mundo digital, com websites,
+                        marketing e uma presença digital à altura
+                        do seu negócio.
+                    </p>
+
+                    <div class="hero-botoes">
+
+                        <a href="#servicos" class="botao-principal">
+                            Conheça os serviços
+                        </a>
+
+                        <a href="#sobre" class="botao-secundario">
+                            Descubra a Haurea
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-detalhe" aria-hidden="true">
+
+                    <span class="linha-dourada"></span>
+
+                    <p>VALOR</p>
+                    <p>EXCELÊNCIA</p>
+                    <p>PRESENÇA DIGITAL</p>
+
+                </div>
+
+            </section>
+
+            <!-- SERVIÇOS -->
+            <section class="servicos" id="servicos">
+
+                <div class="secao-introducao">
+
+                    <p class="subtitulo">O QUE FAZEMOS</p>
+
+                    <h2>
+                        Ideias transformadas em
+                        <span>valor.</span>
+                    </h2>
+
+                    <p>
+                        Soluções digitais pensadas para fortalecer
+                        marcas e impulsionar negócios.
+                    </p>
+
+                </div>
+
+                <div class="servicos-lista">
+
+                    <article class="servico">
+                        <span class="numero">01</span>
+                        <h3>Criação de Websites</h3>
+                        <p>
+                            Sites profissionais, institucionais
+                            e lojas online.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">02</span>
+                        <h3>Marketing Digital</h3>
+                        <p>
+                            Estratégias para aumentar a visibilidade
+                            e as vendas.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">03</span>
+                        <h3>Gestão de Redes Sociais</h3>
+                        <p>
+                            Planeamento, criação de conteúdos
+                            e gestão de páginas.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">04</span>
+                        <h3>Design Gráfico e Identidade Visual</h3>
+                        <p>
+                            Logótipos, banners e materiais publicitários.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">05</span>
+                        <h3>Publicidade Digital</h3>
+                        <p>
+                            Campanhas de anúncios para atrair
+                            potenciais clientes.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">06</span>
+                        <h3>Manutenção de Websites</h3>
+                        <p>
+                            Atualizações, correções e melhorias
+                            nos sites.
+                        </p>
+                    </article>
+
+                    <article class="servico">
+                        <span class="numero">07</span>
+                        <h3>Consultoria Digital</h3>
+                        <p>
+                            Orientação para melhorar a presença
+                            e o crescimento dos negócios.
+                        </p>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- SOBRE NÓS -->
+            <section class="sobre" id="sobre">
+
+                <p class="subtitulo">A NOSSA ESSÊNCIA</p>
+
+                <h2>
+                    Seu potencial.
+                    <span>Nossa transformação.</span>
+                </h2>
+
+                <p>
+                    A HAUREA DIGITAL ajuda startups, pequenas e médias
+                    empresas e empreendedores a revelar o seu potencial
+                    através da tecnologia, criatividade e inovação.
+                </p>
+
+            </section>
+
+            <!-- FORMULÁRIO DE PEDIDO DE SERVIÇOS -->
+            <section class="reserva" id="reserva">
+
+                <div class="secao-introducao">
+
+                    <p class="subtitulo">ÁREA DO CLIENTE</p>
+
+                    <h2>
+                        Refina o meu
+                        <span>ouro</span>
+                    </h2>
+
+                    <p>
+                        Escolha o serviço e explique-nos o que
+                        pretende realizar.
+                    </p>
+
+                </div>
+
+                <div class="reserva-form">
+
+                    <form id="serviceRequestForm">
+
+                        <div class="reserva-grelha">
+
+                            <div class="campo campo-total">
+
+                                <label for="service">
+                                    Que serviço pretende?
+                                </label>
+
+                                <select id="service" required>
+                                    <option value="">Selecione um serviço</option>
+                                    <option value="Criação de Websites">Criação de Websites</option>
+                                    <option value="Marketing Digital">Marketing Digital</option>
+                                    <option value="Gestão de Redes Sociais">Gestão de Redes Sociais</option>
+                                    <option value="Design Gráfico e Identidade Visual">Design Gráfico e Identidade Visual</option>
+                                    <option value="Publicidade Digital">Publicidade Digital</option>
+                                    <option value="Manutenção de Websites">Manutenção de Websites</option>
+                                    <option value="Consultoria Digital">Consultoria Digital</option>
+                                    <option value="Outro serviço">Outro serviço</option>
+                                </select>
+
+                            </div>
+
+                            <div class="campo campo-total">
+
+                                <label for="description">
+                                    Explique a sua ideia
+                                </label>
+
+                                <textarea
+                                    id="description"
+                                    rows="6"
+                                    minlength="10"
+                                    maxlength="1000"
+                                    placeholder="Conte-nos sobre o seu negócio, a sua ideia e os seus objetivos..."
+                                    required></textarea>
+
+                            </div>
+
+                        </div>
+
+                        <div class="reserva-acao">
+
+                            <button type="submit" id="submitRequestBtn" class="botao-principal">
+                                Enviar pedido
+                            </button>
+
+                        </div>
+
+                        <p id="requestMessage" role="status" aria-live="polite"></p>
+
+                    </form>
+
+                    <!-- HISTÓRICO DE PEDIDOS -->
+                    <div class="my-requests-section">
+
+                        <h3>Os meus pedidos</h3>
+
+                        <button type="button" id="loadRequestsBtn" class="botao-secundario">
+                            Consultar os meus pedidos
+                        </button>
+
+                        <div id="myRequests"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- CONTACTOS -->
+            <section class="contactos" id="contactos">
+
+                <p class="subtitulo">
+                    O PRÓXIMO PASSO COMEÇA AQUI
+                </p>
+
+                <h2>
+                    Vamos transformar a sua visão em realidade?
+                </h2>
+
+                <p>
+                    Conte-nos a sua ideia. Juntos, podemos construir
+                    uma presença digital à altura do seu negócio.
+                </p>
+
+                <a
+                    href="https://wa.me/244976231794"
+                    class="botao-principal"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Fale connosco no WhatsApp
+                </a>
+
+            </section>
+
+        </main>
+
+        <!-- RODAPÉ -->
+        <footer class="rodape">
+
+            <a href="#inicio" class="logo">
+                HAUREA <span>DIGITAL</span>
+            </a>
+
+            <p>Você tem o ouro. Nós refinamos.</p>
+
+            <p class="copyright">
+                © 2026 HAUREA DIGITAL. Todos os direitos reservados.
+            </p>
+
+        </footer>
+
+    </div>
+
+    <!-- =====================================
+         3. JAVASCRIPT — ORDEM IMPORTANTE
+    ====================================== -->
+  
+    <!-- Biblioteca Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Ligação à base de dados -->
+    <script src="supabase-init.js"></script>
+
+    <!-- Autenticação: registo, login e terminar sessão -->
+    <script src="auth.js"></script>
+
+    <!-- Pedidos de serviços da HAUREA DIGITAL -->
+    <script src="script.js"></script>
+</body>
+</html>
