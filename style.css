@@ -1,171 +1,212 @@
-/* =========================================
-   HAUREA DIGITAL — PLATINUM LUXURY
-   Obsidian Black • Platinum Gold • 3D
-========================================= */
+/* ==========================================================================
+   HAUREA DIGITAL — style.css (completo)
+   Tema: preto obsidiana + dourado platinum
+   ========================================================================== */
 
-/* 1. IDENTIDADE VISUAL */
+/* ---------- VARIÁVEIS ---------- */
 
 :root {
-    /* Fundos */
-    --obsidiana: #080808;
-    --preto: #030303;
-    --fundo: #0d0d0d;
-    --cartao: #111111;
-
-    /* Dourados */
-    --ouro-escuro: #76551b;
-    --ouro: #b89646;
-    --platinum: #e8d5a0;
-    --ouro-claro: #fff1c5;
-
-    --borda: rgba(207, 174, 104, 0.22);
-
-    /* =====================================
-       CORES DOS TEXTOS
-       Altere as cores AQUI e muda no site todo
-    ===================================== */
-
-    /* Geral */
-    --texto: #f5f2eb;                    /* texto principal do site */
-    --cinza: #a7a39a;                    /* parágrafos das secções */
-
-    /* Cabeçalho */
-    --texto-menu: #d4d0c7;               /* links do menu */
-    --texto-menu-hover: var(--platinum); /* menu ao passar o rato */
-    --texto-logo-span: #d6d1c5;          /* parte clara do logótipo */
-    --texto-botao-header: var(--platinum);
-    --texto-botao-header-hover: #080808;
-
-    /* Página inicial */
-    --texto-subtitulo: var(--platinum);  /* texto pequeno acima do título */
-    --texto-descricao: #bcb8af;          /* descrição abaixo do título */
-    --texto-botao-principal: #17120a;
-    --texto-botao-secundario: #e4d7b9;
-    --texto-detalhe: #d6c7a5;            /* texto na barra lateral */
-
-    /* Serviços */
-    --texto-numero: #c6a253;             /* 01, 02, 03... */
-    --texto-servico-titulo: #eee5d2;
-    --texto-servico-paragrafo: #a7a39a;
-
-    /* Rodapé */
-    --texto-rodape: #a7a39a;
-    --texto-copyright: #77736b;
-
-    /* Gradiente dourado dos títulos (palavras em <span>) */
-    --gradiente-titulo: linear-gradient(
-        115deg,
-        #80602a 0%,
-        #c7a65c 17%,
-        #fff0c2 33%,
-        #d4b56f 46%,
-        #f8e7b5 57%,
-        #9d7838 73%,
-        #e8d5a0 88%,
-        #a27d3d 100%
+    --ouro: #d4af37;
+    --ouro-claro: #f0d77a;
+    --ouro-suave: rgba(212, 175, 55, 0.08);
+    --ouro-borda: rgba(212, 175, 55, 0.35);
+    --ouro-gradiente: linear-gradient(
+        135deg,
+        #a8832a 0%,
+        #d4af37 30%,
+        #f6e7a8 50%,
+        #d4af37 70%,
+        #a8832a 100%
     );
-
-    /* Gradiente dourado do logótipo */
-    --gradiente-logo: linear-gradient(
-        120deg,
-        #8a672a 0%,
-        #e8d5a0 22%,
-        #fff5d7 38%,
-        #ad8740 53%,
-        #f3dfad 72%,
-        #866020 100%
-    );
+    --fundo: #080808;
+    --fundo-card: rgba(17, 17, 17, 0.96);
+    --fundo-campo: #0c0c0c;
+    --borda: #383838;
+    --texto: #f5f5f5;
+    --texto-suave: #bcbcbc;
+    --texto-fraco: #8a8a8a;
+    --sucesso: #5ed38a;
+    --erro: #ff6b6b;
+    --transicao: 0.25s ease;
+    --fonte-titulo: "Cinzel", Georgia, "Times New Roman", serif;
+    --fonte-corpo: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
 }
 
-/* 2. CONFIGURAÇÕES GERAIS */
+/* ---------- BASE ---------- */
 
-* {
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--obsidiana);
+    margin: 0;
+    background: var(--fundo);
     color: var(--texto);
+    font-family: var(--fonte-corpo);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0 0 16px;
+    line-height: 1.2;
+}
+
+h1,
+h2 {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+}
+
+p {
+    margin: 0 0 16px;
     line-height: 1.7;
-    overflow-x: hidden;
 }
 
 a {
     color: inherit;
-    text-decoration: none;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
+section[id] {
+    scroll-margin-top: 90px;
 }
 
-::selection {
-    background: var(--ouro);
-    color: var(--preto);
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--ouro);
+    outline-offset: 3px;
 }
 
-/* 3. CABEÇALHO */
+/* ---------- ELEMENTOS COMUNS ---------- */
 
-.cabecalho {
-    width: 100%;
-    min-height: 88px;
-    padding: 20px 8%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-
-    background: rgba(5, 5, 5, 0.94);
-    border-bottom: 1px solid var(--borda);
-
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    backdrop-filter: blur(18px);
+.subtitulo {
+    margin-bottom: 16px;
+    color: var(--ouro);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
 }
 
-/* 4. LOGÓTIPO TIPOGRÁFICO */
-
-.logo {
-    display: inline-block;
-
-    font-size: 23px;
-    font-weight: 800;
-    letter-spacing: 3px;
-
-    color: transparent;
-
-    background: var(--gradiente-logo);
-
+h2 span,
+.hero h1 span {
+    background: var(--ouro-gradiente);
     -webkit-background-clip: text;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--ouro);
+}
 
-    filter: drop-shadow(
-        0 2px 7px rgba(198, 159, 78, 0.14)
-    );
+.logo {
+    font-family: var(--fonte-titulo);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--texto);
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 .logo span {
-    color: var(--texto-logo-span);
-    background: none;
-    -webkit-text-fill-color: var(--texto-logo-span);
-
-    font-weight: 400;
-    letter-spacing: 4px;
+    color: var(--ouro);
 }
 
-/* 5. NAVEGAÇÃO */
+/* ---------- BOTÕES ---------- */
+
+.botao-principal,
+.botao-secundario,
+.botao-header {
+    display: inline-block;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        transform var(--transicao),
+        box-shadow var(--transicao),
+        background var(--transicao),
+        color var(--transicao),
+        border-color var(--transicao);
+}
+
+.botao-principal {
+    padding: 15px 30px;
+    border: 1px solid transparent;
+    background: var(--ouro-gradiente);
+    color: #080808;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.18);
+}
+
+.botao-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.3);
+}
+
+.botao-secundario {
+    padding: 15px 30px;
+    border: 1px solid var(--ouro);
+    background: transparent;
+    color: var(--ouro);
+}
+
+.botao-secundario:hover {
+    background: var(--ouro-suave);
+    transform: translateY(-2px);
+}
+
+.botao-header {
+    padding: 9px 16px;
+    border: 1px solid var(--ouro-borda);
+    background: transparent;
+    color: var(--texto);
+    font-size: 13px;
+}
+
+.botao-header:hover {
+    border-color: var(--ouro);
+    color: var(--ouro);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    transform: none;
+}
+
+/* ---------- CABEÇALHO ---------- */
+
+.cabecalho {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 5%;
+    background: rgba(8, 8, 8, 0.88);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--ouro-borda);
+}
 
 .menu {
     display: flex;
@@ -175,944 +216,662 @@ a {
 
 .menu a {
     position: relative;
-
-    font-size: 13px;
-    color: var(--texto-menu);
-
-    transition: color 0.3s ease;
+    padding: 4px 0;
+    color: var(--texto-suave);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color var(--transicao);
 }
 
 .menu a::after {
     content: "";
-
     position: absolute;
     left: 0;
-    bottom: -7px;
-
+    bottom: -2px;
     width: 0;
     height: 1px;
-
-    background: var(--platinum);
-
-    transition: width 0.3s ease;
+    background: var(--ouro);
+    transition: width var(--transicao);
 }
 
 .menu a:hover {
-    color: var(--texto-menu-hover);
+    color: var(--ouro);
 }
 
 .menu a:hover::after {
     width: 100%;
 }
 
-/* 6. BOTÃO DO CABEÇALHO */
-
-.botao-header {
-    padding: 11px 19px;
-
-    border: 1px solid var(--ouro);
-    color: var(--texto-botao-header);
-
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-
-    transition: all 0.3s ease;
-}
-
-.botao-header:hover {
-    background: linear-gradient(
-        120deg,
-        var(--ouro-escuro),
-        var(--platinum),
-        var(--ouro)
-    );
-
-    color: var(--texto-botao-header-hover);
-    box-shadow: 0 0 22px rgba(207, 174, 104, 0.15);
-}
-
-/* 7. PÁGINA INICIAL */
-
-.hero {
-    min-height: 86vh;
-    padding: 100px 8%;
-
+.header-account {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 55px;
+    gap: 12px;
+}
 
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+#welcomeUser {
+    color: var(--ouro);
+    font-size: 14px;
+    font-weight: 500;
+}
 
+/* ---------- PÁGINA INICIAL (HERO) ---------- */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 60px;
+    min-height: calc(100vh - 70px);
+    padding: 80px 5%;
     background:
-        radial-gradient(
-            ellipse at 85% 40%,
-            rgba(149, 104, 31, 0.13),
-            transparent 40%
-        ),
-        radial-gradient(
-            ellipse at 15% 90%,
-            rgba(173, 135, 64, 0.07),
-            transparent 40%
-        ),
-        linear-gradient(
-            120deg,
-            #030303 0%,
-            #0b0b0b 52%,
-            #080706 100%
-        );
+        radial-gradient(ellipse at 20% 0%, rgba(212, 175, 55, 0.14), transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(212, 175, 55, 0.06), transparent 50%),
+        var(--fundo);
 }
-
-/* BRILHO METÁLICO NO FUNDO */
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-
-    background:
-        linear-gradient(
-            115deg,
-            transparent 30%,
-            rgba(218, 184, 111, 0.035) 48%,
-            transparent 58%
-        );
-
-    pointer-events: none;
-}
-
-/* DETALHE DE LUZ */
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-    width: 420px;
-    height: 420px;
-
-    right: 5%;
-    top: 15%;
-
-    border-radius: 50%;
-    border: 1px solid rgba(207, 174, 104, 0.6);
-    border-top-color: #d4b56f; /* borda superior dourada */
-
-    box-shadow:
-        0 0 80px rgba(184, 150, 70, 0.6),
-        inset 0 0 70px rgba(184, 150, 70, 0.6);
-
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* 8. TEXTO PRINCIPAL */
 
 .hero-conteudo {
-    max-width: 700px;
-    position: relative;
-    z-index: 2;
-}
-
-.subtitulo {
-    margin-bottom: 24px;
-
-    color: var(--texto-subtitulo);
-
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 4px;
-    line-height: 1.8;
+    max-width: 760px;
 }
 
 .hero h1 {
-    max-width: 750px;
-    margin-bottom: 27px;
-
-    font-size: clamp(42px, 5.5vw, 76px);
-    font-weight: 700;
-
-    letter-spacing: -2px;
-    line-height: 1.13;
+    margin-bottom: 24px;
+    font-size: clamp(38px, 6.5vw, 76px);
 }
 
-/* TEXTO DOURADO PLATINUM */
-
-.hero h1 span,
-.secao-introducao h2 span,
-.sobre h2 span {
-    display: inline-block;
-
-    color: transparent;
-
-    background: var(--gradiente-titulo);
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    filter: drop-shadow(
-        0 2px 9px rgba(184, 150, 70, 0.12)
-    );
+.hero h1 span {
+    display: block;
 }
 
-/* DESCRIÇÃO */
-
-.hero .descricao {
-    max-width: 570px;
-    margin-bottom: 35px;
-
-    color: var(--texto-descricao);
-    font-size: 16px;
-    line-height: 1.9;
+.descricao {
+    max-width: 580px;
+    margin-bottom: 36px;
+    color: var(--texto-suave);
+    font-size: 18px;
 }
-
-/* 9. BOTÕES PRINCIPAIS */
 
 .hero-botoes {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     gap: 16px;
 }
 
-.botao-principal,
-.botao-secundario {
-    min-height: 49px;
-    padding: 13px 23px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
-}
-
-/* BOTÃO METÁLICO */
-
-.botao-principal {
-    color: var(--texto-botao-principal);
-
-    background: linear-gradient(
-        115deg,
-        #8d692d 0%,
-        #d5b66d 24%,
-        #fff0bd 43%,
-        #c6a253 62%,
-        #e8d5a0 78%,
-        #97702d 100%
-    );
-
-    border: 1px solid #e1c47f;
-    box-shadow: 0 5px 22px rgba(174, 132, 48, 0.12);
-}
-
-.botao-principal:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 28px rgba(207, 174, 104, 0.23),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
-
-.botao-secundario {
-    border: 1px solid rgba(207, 174, 104, 0.5);
-    color: var(--texto-botao-secundario);
-    background: rgba(255, 255, 255, 0.015);
-}
-
-.botao-secundario:hover {
-    border-color: var(--platinum);
-    background: rgba(207, 174, 104, 0.07);
-    transform: translateY(-3px);
-}
-
-/* 10. DETALHE LATERAL DA MARCA */
-
 .hero-detalhe {
-    min-width: 190px;
-    padding: 25px 0 25px 27px;
-
-    border-left: 1px solid rgba(207, 174, 104, 0.5);
-
-    position: relative;
-    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: var(--texto-fraco);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-align: center;
 }
 
 .hero-detalhe p {
-    margin-top: 15px;
-
-    color: var(--texto-detalhe);
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 2px;
+    margin: 0;
 }
 
 .linha-dourada {
     display: block;
-    width: 45px;
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        #82612a,
-        #fff0bd,
-        #a17b38
-    );
-
-    box-shadow: 0 0 12px rgba(207, 174, 104, 0.3);
+    width: 1px;
+    height: 130px;
+    background: linear-gradient(to bottom, transparent, var(--ouro), transparent);
 }
 
-/* 11. SERVIÇOS */
+/* ---------- SECÇÕES ---------- */
 
-.servicos {
-    padding: 110px 8%;
-
-    background:
-        linear-gradient(
-            180deg,
-            #0a0a0a,
-            #0d0d0d
-        );
-
-    border-top: 1px solid rgba(207, 174, 104, 0.08);
+.servicos,
+.sobre,
+.reserva,
+.contactos {
+    padding: 100px 5%;
 }
 
 .secao-introducao {
     max-width: 720px;
-    margin: 0 auto;
+    margin: 0 auto 56px;
     text-align: center;
 }
 
 .secao-introducao h2,
 .sobre h2,
 .contactos h2 {
-    margin-bottom: 20px;
-
-    font-size: clamp(30px, 4vw, 45px);
-    line-height: 1.3;
-    letter-spacing: -0.8px;
+    font-size: clamp(28px, 4.5vw, 46px);
 }
 
-.secao-introducao > p:last-child {
-    color: var(--cinza);
-    font-size: 15px;
+.secao-introducao p,
+.sobre p,
+.contactos p {
+    color: var(--texto-suave);
 }
 
-/* 12. CARTÕES DE SERVIÇOS */
+/* ---------- SERVIÇOS ---------- */
 
 .servicos-lista {
-    margin-top: 55px;
-
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
+    max-width: 1150px;
+    margin: 0 auto;
 }
 
 .servico {
-    min-height: 250px;
-    padding: 34px 29px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.025),
-            rgba(255, 255, 255, 0.005) 55%,
-            rgba(184, 150, 70, 0.025)
-        );
-
-    border: 1px solid rgba(207, 174, 104, 0.16);
-    position: relative;
-    overflow: hidden;
-
+    padding: 32px 28px;
+    background: var(--fundo-card);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 16px;
     transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        background 0.35s ease;
-}
-
-/* REFLEXO NO CARTÃO */
-
-.servico::before {
-    content: "";
-
-    position: absolute;
-    top: 0;
-    left: -120%;
-
-    width: 80%;
-    height: 1px;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #f8e7b5,
-        transparent
-    );
-
-    transition: left 0.6s ease;
-}
-
-.servico:hover::before {
-    left: 120%;
+        transform var(--transicao),
+        border-color var(--transicao),
+        box-shadow var(--transicao);
 }
 
 .servico:hover {
-    transform: translateY(-7px);
-
-    border-color: rgba(232, 213, 160, 0.55);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(184, 150, 70, 0.075),
-            rgba(255, 255, 255, 0.01)
-        );
+    transform: translateY(-4px);
+    border-color: var(--ouro);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
-.numero {
-    color: var(--texto-numero);
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 3px;
+.servico .numero {
+    display: block;
+    margin-bottom: 14px;
+    color: var(--ouro);
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    letter-spacing: 0.2em;
 }
 
 .servico h3 {
-    margin: 25px 0 13px;
-
-    color: var(--texto-servico-titulo);
+    margin-bottom: 10px;
     font-size: 20px;
-    line-height: 1.4;
 }
 
 .servico p {
-    color: var(--texto-servico-paragrafo);
-    font-size: 14px;
-    line-height: 1.9;
+    margin-bottom: 10px;
+    color: var(--texto-suave);
 }
 
-/* 13. SOBRE NÓS */
+.servico small {
+    color: var(--texto-fraco);
+}
+
+/* ---------- SOBRE ---------- */
 
 .sobre {
-    padding: 110px 8%;
-    text-align: center;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(145, 105, 36, 0.075),
-            transparent 60%
-        ),
-        #070707;
-
-    border-top: 1px solid rgba(207, 174, 104, 0.1);
-    border-bottom: 1px solid rgba(207, 174, 104, 0.1);
-}
-
-.sobre h2 {
-    max-width: 800px;
-    margin: 0 auto 25px;
-}
-
-.sobre > p:last-child {
-    max-width: 720px;
+    max-width: 900px;
     margin: 0 auto;
-
-    color: var(--cinza);
-    font-size: 15px;
-    line-height: 2;
-}
-
-/* 14. CONTACTOS */
-
-.contactos {
-    padding: 110px 8%;
     text-align: center;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 100%,
-            rgba(184, 150, 70, 0.08),
-            transparent 60%
-        ),
-        #0b0b0b;
 }
 
-.contactos h2 {
-    max-width: 800px;
-    margin: 0 auto 22px;
+.sobre p {
+    font-size: 18px;
 }
 
-.contactos > p:not(.subtitulo) {
-    max-width: 610px;
-    margin: 0 auto 32px;
-
-    color: var(--cinza);
-    font-size: 15px;
-    line-height: 1.9;
-}
-
-/* 15. RODAPÉ */
-
-.rodape {
-    padding: 38px 8%;
-
-    text-align: center;
-
-    background: #030303;
-    border-top: 1px solid var(--borda);
-}
-
-.rodape .logo {
-    margin-bottom: 10px;
-}
-
-.rodape p {
-    margin-top: 9px;
-
-    color: var(--texto-rodape);
-    font-size: 12px;
-}
-
-.rodape .copyright {
-    margin-top: 20px;
-    color: var(--texto-copyright);
-    font-size: 11px;
-}
-
-/* 16. ACESSIBILIDADE */
-
-a:focus-visible {
-    outline: 2px solid var(--platinum);
-    outline-offset: 5px;
-}
-
-section[id] {
-    scroll-margin-top: 105px;
-}
-
-/* 17. TABLETS */
-
-@media (max-width: 1050px) {
-    .cabecalho {
-        padding: 20px 5%;
-        gap: 20px;
-    }
-
-    .menu {
-        gap: 17px;
-    }
-
-    .logo {
-        font-size: 20px;
-        letter-spacing: 2px;
-    }
-
-    .logo span {
-        letter-spacing: 2px;
-    }
-
-    .hero {
-        padding: 90px 6%;
-        gap: 30px;
-    }
-
-    .hero-detalhe {
-        min-width: 150px;
-    }
-
-    .servicos-lista {
-        gap: 16px;
-    }
-
-    .servico {
-        padding: 27px 22px;
-    }
-}
-
-/* 18. TELEMÓVEIS */
-
-@media (max-width: 760px) {
-    .cabecalho {
-        position: relative;
-
-        flex-direction: column;
-        justify-content: center;
-        gap: 19px;
-
-        padding: 23px 5%;
-    }
-
-    .logo {
-        font-size: 21px;
-    }
-
-    .menu {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px 20px;
-    }
-
-    .menu a {
-        font-size: 12px;
-    }
-
-    .botao-header {
-        padding: 10px 17px;
-    }
-
-    .hero {
-        min-height: auto;
-        padding: 90px 6% 80px;
-
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 55px;
-    }
-
-    .hero h1 {
-        font-size: clamp(40px, 10vw, 60px);
-        letter-spacing: -1.5px;
-    }
-
-    .hero .descricao {
-        font-size: 15px;
-    }
-
-    .subtitulo {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
-
-    .hero-botoes {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .hero-botoes a {
-        width: 100%;
-    }
-
-    .hero-detalhe {
-        min-width: 0;
-        padding: 12px 0 12px 22px;
-    }
-
-    .hero::after {
-        width: 260px;
-        height: 260px;
-        right: -100px;
-        top: 40%;
-    }
-
-    .servicos,
-    .sobre,
-    .contactos {
-        padding: 80px 6%;
-    }
-
-    .servicos-lista {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        margin-top: 38px;
-    }
-
-    .servico {
-        min-height: auto;
-        padding: 30px 25px;
-    }
-
-    .secao-introducao h2,
-    .sobre h2,
-    .contactos h2 {
-        font-size: clamp(29px, 8vw, 38px);
-    }
-
-    .rodape {
-        padding: 32px 6%;
-    }
-}
-
-/* 19. TELEMÓVEIS PEQUENOS */
-
-@media (max-width: 380px) {
-    .logo {
-        font-size: 18px;
-        letter-spacing: 1.5px;
-    }
-
-    .logo span {
-        letter-spacing: 1.5px;
-    }
-
-    .menu {
-        gap: 10px 14px;
-    }
-
-    .menu a {
-        font-size: 11px;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .hero {
-        padding-top: 70px;
-    }
-}
-
-/* 20. MOVIMENTO REDUZIDO */
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* 21. FORMULÁRIO DE RESERVA */
+/* ---------- SOLICITAR SERVIÇO ---------- */
 
 .reserva {
-    padding: 110px 8%;
-
-    background: #000000;
-    border-top: 1px solid rgba(207, 174, 104, 0.1);
+    background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.07), transparent 60%);
 }
 
 .reserva-form {
-    max-width: 780px;
-    margin: 55px auto 0;
-    padding: 48px 44px;
-
-    background: #000000;
-    border: 1px solid rgba(207, 174, 104, 0.16);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 38px 35px;
+    background: var(--fundo-card);
+    border: 1px solid var(--ouro-borda);
+    border-radius: 20px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
 }
 
 .reserva-grelha {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 34px 32px;
-}
-
-.campo {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .campo-total {
     grid-column: 1 / -1;
 }
 
-/* TÍTULOS DOS CAMPOS (DOURADO) */
-
 .campo label {
-    color: var(--ouro);
-
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    display: block;
+    color: #e5e5e5;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.campo label small {
-    margin-left: 6px;
-
-    color: #77736b;
-    font-size: 11px;
-    font-weight: normal;
-    letter-spacing: 1px;
-    text-transform: none;
-}
-
-/* CAMPOS (LINHA FINA, TEXTO BRANCO) */
-
-.campo input,
-.campo select,
-.campo textarea {
+.reserva-form select,
+.reserva-form textarea {
     width: 100%;
-    padding: 12px 0;
-
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(207, 174, 104, 0.22);
-    border-radius: 0;
-    outline: none;
-
-    color: #ffffff;
-    color-scheme: dark;
-
-    font-family: inherit;
-    font-size: 15px;
-
+    margin-top: 8px;
+    padding: 14px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: var(--fundo-campo);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
     transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        border-color var(--transicao),
+        box-shadow var(--transicao);
 }
 
-.campo input::placeholder,
-.campo textarea::placeholder {
-    color: rgba(255, 255, 255, 0.32);
-}
-
-.campo input:focus,
-.campo select:focus,
-.campo textarea:focus {
-    border-bottom-color: var(--platinum);
-    box-shadow: 0 1px 0 var(--platinum);
-}
-
-.campo textarea {
-    min-height: 110px;
+.reserva-form textarea {
+    min-height: 150px;
     resize: vertical;
+}
+
+.reserva-form select:hover,
+.reserva-form textarea:hover {
+    border-color: #555;
+}
+
+.reserva-form select:focus,
+.reserva-form textarea:focus {
+    outline: none;
+    border-color: var(--ouro);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+}
+
+.reserva-form option {
+    background: #111;
+    color: #fff;
+}
+
+.reserva-form ::placeholder {
+    color: #666;
+}
+
+.reserva-acao {
+    margin-top: 24px;
+    text-align: center;
+}
+
+#requestMessage {
+    min-height: 24px;
+    margin: 18px 0 0;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.msg-info {
+    color: var(--ouro);
+}
+
+.msg-success {
+    color: var(--sucesso);
+}
+
+.msg-error {
+    color: var(--erro);
+}
+
+.msg-link {
+    display: inline-block;
+    margin-top: 12px;
+}
+
+/* ---------- OS MEUS PEDIDOS ---------- */
+
+.my-requests-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--ouro-borda);
+}
+
+.my-requests-section h3 {
+    margin-bottom: 18px;
+    font-size: 22px;
+}
+
+#myRequests {
+    display: grid;
+    gap: 15px;
+    margin-top: 18px;
+}
+
+#myRequests > p {
+    margin: 0;
+    color: var(--texto-suave);
+}
+
+/* ---------- CONTACTOS ---------- */
+
+.contactos {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contactos p {
+    margin-bottom: 32px;
+    font-size: 18px;
+}
+
+/* ---------- RODAPÉ ---------- */
+
+.rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 50px 5% 40px;
+    background: #050505;
+    border-top: 1px solid var(--ouro-borda);
+    text-align: center;
+}
+
+.rodape p {
+    margin: 0;
+    color: var(--texto-suave);
+}
+
+.rodape .copyright {
+    margin-top: 12px;
+    color: var(--texto-fraco);
+    font-size: 12px;
+}
+
+/* ==========================================
+   HAUREA DIGITAL — AUTENTICAÇÃO PREMIUM
+========================================== */
+
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 35px 20px;
+    background:
+        radial-gradient(ellipse at top, rgba(212, 175, 55, 0.14), transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(212, 175, 55, 0.05), transparent 55%),
+        var(--fundo);
+    color: var(--texto);
+}
+
+/* ---------- LOGÓTIPO DA TELA DE ENTRADA ---------- */
+
+.auth-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 38px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.auth-logo .auth-brand-nome {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(34px, 8vw, 52px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    margin-right: -0.22em;
+    background: var(--ouro-gradiente);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--ouro);
+    filter: drop-shadow(0 4px 18px rgba(212, 175, 55, 0.25));
+}
+
+.auth-logo .auth-brand-linha {
+    display: block;
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+}
+
+.auth-logo .auth-brand-sub {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(12px, 3vw, 15px);
+    font-weight: 500;
+    letter-spacing: 0.7em;
+    margin-right: -0.7em;
+    color: var(--texto-suave);
+}
+
+/* ---------- CARTÃO ---------- */
+
+.auth-card {
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+    padding: 38px 35px;
+    background: var(--fundo-card);
+    border: 1px solid var(--ouro-borda);
+    border-radius: 20px;
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(212, 175, 55, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.auth-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 120px;
+    height: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+}
+
+.auth-card h1 {
+    margin: 12px 0;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.2;
+}
+
+.auth-card h1 span {
+    color: var(--ouro);
+}
+
+.auth-intro,
+.auth-privacy {
+    color: var(--texto-suave);
     line-height: 1.7;
 }
 
-/* SELETOR (OCASIÃO) */
+/* ---------- SEPARADORES (TABS) ---------- */
 
-.campo select {
-    padding-right: 28px;
+.auth-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 28px 0;
+}
 
-    appearance: none;
-    -webkit-appearance: none;
+.auth-tab {
+    padding: 13px 8px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: #101010;
+    color: #eee;
     cursor: pointer;
-
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23b89646' stroke-width='1.5'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 4px center;
-}
-
-.campo select option {
-    background: #0d0d0d;
-    color: #ffffff;
-}
-
-/* TELEFONE COM INDICATIVO +244 */
-
-.campo-telefone {
-    display: flex;
-    align-items: center;
-
-    border-bottom: 1px solid rgba(207, 174, 104, 0.22);
-
+    font: inherit;
     transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        color var(--transicao),
+        border-color var(--transicao),
+        background var(--transicao),
+        transform var(--transicao);
 }
 
-.campo-telefone:focus-within {
-    border-bottom-color: var(--platinum);
-    box-shadow: 0 1px 0 var(--platinum);
+.auth-tab:hover {
+    color: var(--ouro);
+    border-color: var(--ouro);
+    transform: translateY(-1px);
 }
 
-.prefixo {
-    margin-right: 14px;
-    padding: 12px 14px 12px 0;
+.auth-tab.active {
+    color: var(--ouro);
+    border-color: var(--ouro);
+    background: var(--ouro-suave);
+    font-weight: 600;
+}
 
-    border-right: 1px solid rgba(207, 174, 104, 0.22);
+/* ---------- CAMPOS ---------- */
 
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: bold;
+.auth-card .campo {
+    margin-bottom: 18px;
+}
+
+.auth-card input {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: var(--fundo-campo);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    transition:
+        border-color var(--transicao),
+        box-shadow var(--transicao);
+}
+
+.auth-card input::placeholder {
+    color: #666;
+}
+
+.auth-card input:hover {
+    border-color: #555;
+}
+
+.auth-card input:focus {
+    outline: none;
+    border-color: var(--ouro);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+}
+
+.auth-card input:-webkit-autofill {
+    -webkit-text-fill-color: #fff;
+    box-shadow: 0 0 0 1000px var(--fundo-campo) inset;
+    caret-color: #fff;
+}
+
+/* ---------- BOTÃO ---------- */
+
+.auth-submit {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ---------- MENSAGENS DA AUTENTICAÇÃO ---------- */
+
+.auth-message {
+    min-height: 24px;
+    margin: 18px 0 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.auth-message.info {
+    color: var(--ouro);
+}
+
+.auth-message.success {
+    color: var(--sucesso);
+}
+
+.auth-message.error {
+    color: var(--erro);
+}
+
+.auth-privacy {
+    margin: 20px 0 0;
+    font-size: 13px;
+    text-align: center;
+}
+
+.auth-footer {
+    margin: 28px 0 0;
+    color: var(--texto-fraco);
+    font-size: 11px;
     letter-spacing: 1px;
+    text-align: center;
 }
 
-.campo-telefone input,
-.campo-telefone input:focus {
-    border-bottom: none;
-    box-shadow: none;
+/* ---------- TABLET E TELEMÓVEL ---------- */
+
+@media (max-width: 900px) {
+    .cabecalho {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 5%;
+    }
+
+    .menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 70px 5%;
+    }
+
+    .hero-detalhe {
+        display: none;
+    }
+
+    .servicos,
+    .sobre,
+    .reserva,
+    .contactos {
+        padding: 70px 5%;
+    }
 }
 
-/* BOTÃO DOURADO COM TEXTO PRETO */
-
-.reserva-acao {
-    margin-top: 44px;
-    padding-top: 34px;
-
-    display: flex;
-    justify-content: center;
-
-    border-top: 1px solid rgba(207, 174, 104, 0.16);
-}
-
-.botao-reserva {
-    min-width: 260px;
-
-    font-family: inherit;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-/* RESERVA — TELEMÓVEIS */
-
-@media (max-width: 760px) {
-    .reserva {
-        padding: 80px 6%;
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 28px 20px;
     }
 
     .reserva-form {
-        margin-top: 38px;
-        padding: 34px 24px;
+        padding: 28px 20px;
     }
 
     .reserva-grelha {
         grid-template-columns: 1fr;
-        gap: 28px;
     }
 
-    .campo input,
-    .campo select,
-    .campo textarea {
-        font-size: 16px;
+    .header-account {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .botao-reserva {
+    #welcomeUser {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-botoes .botao-principal,
+    .hero-botoes .botao-secundario {
         width: 100%;
     }
 }
 
-/* TÍTULO DO FORMULÁRIO — "ouro" em dourado metálico */
+/* ---------- ACESSIBILIDADE ---------- */
 
-.reserva .secao-introducao h2 {
-    color: #ffffff;
-}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 
-.reserva .secao-introducao h2 span {
-    background: linear-gradient(
-        115deg,
-        #8a672a 0%,
-        #d4b56f 18%,
-        #fff5d7 36%,
-        #e8c872 50%,
-        #fff0c2 62%,
-        #b8923f 80%,
-        #e8d5a0 100%
-    );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    filter:
-        drop-shadow(0 0 12px rgba(232, 200, 114, 0.35))
-        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    * {
+        transition: none !important;
+    }
 }
