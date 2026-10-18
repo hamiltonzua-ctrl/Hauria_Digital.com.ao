@@ -40,18 +40,37 @@
     box-sizing: border-box;
 }
 
+/* A cor base do site fica no html. O body é transparente para a
+   animação (canvas fixo, z-index -1) aparecer por trás de tudo. */
 html {
+    background: var(--fundo);
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
     margin: 0;
-    background: var(--fundo);
+    background: transparent;
     color: var(--texto);
     font-family: var(--fonte-corpo);
     font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Brilho dourado FIXO no fundo (não rola com as secções).
+   z-index -2: fica por baixo do canvas das partículas (z-index -1).
+   Mesmas cores e intensidade do original. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 20% 0%, rgba(212, 175, 55, 0.14), transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(212, 175, 55, 0.06), transparent 50%);
 }
 
 [hidden] {
@@ -256,6 +275,7 @@ button:disabled {
 }
 
 /* ---------- PÁGINA INICIAL (HERO) ---------- */
+/* Sem fundo próprio: a animação do fundo aparece por trás. */
 
 .hero {
     display: grid;
@@ -265,10 +285,7 @@ button:disabled {
     min-height: calc(100vh - 70px);
     min-height: calc(100dvh - 70px);
     padding: 80px 5%;
-    background:
-        radial-gradient(ellipse at 20% 0%, rgba(212, 175, 55, 0.14), transparent 55%),
-        radial-gradient(ellipse at 100% 100%, rgba(212, 175, 55, 0.06), transparent 50%),
-        var(--fundo);
+    background: transparent;
 }
 
 .hero-conteudo {
@@ -542,6 +559,312 @@ button:disabled {
     color: var(--texto-suave);
 }
 
+/* ---------- ESTADO DOS PEDIDOS ---------- */
+
+.estado-etiqueta {
+    display: inline-block;
+    padding: 2px 12px;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.estado-pendente {
+    color: var(--ouro);
+}
+
+.estado-andamento {
+    color: #6ab0ff;
+}
+
+.estado-concluido {
+    color: var(--sucesso);
+}
+
+.estado-cancelado {
+    color: var(--erro);
+}
+
+/* ---------- EDITAR / APAGAR PEDIDOS ---------- */
+
+.pedido-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.pedido-botao {
+    padding: 9px 18px;
+    border: 1px solid var(--ouro-borda);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--texto);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform var(--transicao),
+        background var(--transicao),
+        color var(--transicao),
+        border-color var(--transicao);
+}
+
+.pedido-botao:hover {
+    border-color: var(--ouro);
+    color: var(--ouro);
+    transform: translateY(-1px);
+}
+
+.pedido-botao-principal {
+    border-color: transparent;
+    background: var(--ouro-gradiente);
+    color: #080808;
+}
+
+.pedido-botao-principal:hover {
+    color: #080808;
+}
+
+.pedido-botao-perigo {
+    border-color: rgba(255, 107, 107, 0.5);
+    color: var(--erro);
+}
+
+.pedido-botao-perigo:hover {
+    border-color: var(--erro);
+    background: rgba(255, 107, 107, 0.08);
+    color: var(--erro);
+}
+
+/* Cartão em edição: não "salta" ao passar o rato */
+.servico.em-edicao:hover {
+    transform: none;
+}
+
+.pedido-campo {
+    margin-bottom: 16px;
+}
+
+.pedido-campo label {
+    display: block;
+    color: #e5e5e5;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.pedido-edicao select,
+.pedido-edicao textarea {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: var(--fundo-campo);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    transition:
+        border-color var(--transicao),
+        box-shadow var(--transicao);
+}
+
+.pedido-edicao textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.pedido-edicao select:focus,
+.pedido-edicao textarea:focus {
+    outline: none;
+    border-color: var(--ouro);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+}
+
+.pedido-msg {
+    min-height: 22px;
+    margin: 0;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.pedido-aviso-apagar {
+    color: var(--erro) !important;
+    font-size: 14px;
+}
+
+/* Aviso de sucesso por cima da lista ("Pedido atualizado...") */
+#myRequests > .pedido-aviso {
+    color: var(--sucesso);
+}
+
+/* ---------- PERFIL DO CLIENTE ---------- */
+
+/* Bolinha com a foto no cabeçalho */
+.avatar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--ouro);
+    border-radius: 50%;
+    background: var(--fundo-campo);
+    color: var(--ouro);
+    font-family: var(--fonte-titulo);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform var(--transicao),
+        box-shadow var(--transicao);
+}
+
+.avatar-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+}
+
+.avatar-btn img,
+.perfil-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Janela */
+.perfil-dialog {
+    width: min(480px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    border: 1px solid var(--ouro-borda);
+    border-radius: 20px;
+    background: var(--fundo-card);
+    color: var(--texto);
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.7);
+}
+
+.perfil-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.perfil-form {
+    padding: 32px 28px;
+}
+
+.perfil-form h2 {
+    margin-bottom: 24px;
+    font-size: 26px;
+    text-align: center;
+}
+
+.perfil-foto {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.perfil-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 96px;
+    height: 96px;
+    overflow: hidden;
+    border: 2px solid var(--ouro);
+    border-radius: 50%;
+    background: var(--fundo-campo);
+    color: var(--ouro);
+    font-family: var(--fonte-titulo);
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.perfil-foto-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.perfil-foto-acoes small {
+    flex-basis: 100%;
+    color: var(--texto-fraco);
+}
+
+/* "Escolher foto" é um label com aspeto de botão */
+label.pedido-botao {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.perfil-campo {
+    margin-bottom: 18px;
+}
+
+.perfil-campo label {
+    display: block;
+    color: #e5e5e5;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.perfil-campo input {
+    width: 100%;
+    margin-top: 8px;
+    padding: 13px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: var(--fundo-campo);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    transition:
+        border-color var(--transicao),
+        box-shadow var(--transicao);
+}
+
+.perfil-campo input::placeholder {
+    color: #666;
+}
+
+.perfil-campo input:focus {
+    outline: none;
+    border-color: var(--ouro);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+}
+
+.perfil-campo input[readonly] {
+    color: var(--texto-fraco);
+    cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+    .perfil-form {
+        padding: 26px 18px;
+    }
+
+    .perfil-foto {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .perfil-foto-acoes {
+        justify-content: center;
+    }
+}
+
 /* ---------- CONTACTOS ---------- */
 
 .contactos {
@@ -583,6 +906,7 @@ button:disabled {
    HAUREA DIGITAL — AUTENTICAÇÃO PREMIUM
 ========================================== */
 
+/* Sem fundo próprio: a animação do fundo aparece por trás. */
 .auth-page {
     display: flex;
     flex-direction: column;
@@ -591,10 +915,7 @@ button:disabled {
     min-height: 100vh;
     min-height: 100dvh;
     padding: 35px 20px;
-    background:
-        radial-gradient(ellipse at top, rgba(212, 175, 55, 0.14), transparent 50%),
-        radial-gradient(ellipse at bottom, rgba(212, 175, 55, 0.05), transparent 55%),
-        var(--fundo);
+    background: transparent;
     color: var(--texto);
 }
 
@@ -770,6 +1091,30 @@ button:disabled {
     display: block;
     width: 100%;
     margin-top: 10px;
+}
+
+/* ---------- LINKS DA AUTENTICAÇÃO (esqueci-me / voltar) ---------- */
+
+.auth-link {
+    display: block;
+    margin: 16px auto 0;
+    padding: 6px 10px;
+    border: 0;
+    background: none;
+    color: var(--texto-suave);
+    font: inherit;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: var(--ouro-borda);
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: color var(--transicao), text-decoration-color var(--transicao);
+}
+
+.auth-link:hover {
+    color: var(--ouro);
+    text-decoration-color: var(--ouro);
 }
 
 /* ---------- MENSAGENS DA AUTENTICAÇÃO ---------- */
